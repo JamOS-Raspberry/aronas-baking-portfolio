@@ -83,3 +83,6 @@ header{position:sticky;top:0;z-index:20}
 .intro-portrait{overflow:hidden}
 .intro-portrait img{transform:scale(1.08)}
 
+
+.language-short{display:none}
+@media(max-width:620px){.language-full{display:none}.language-short{display:inline}}
