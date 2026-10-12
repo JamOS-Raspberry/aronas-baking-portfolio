@@ -1,6 +1,6 @@
 # Aronas’s baking portfolio
 
-Live website: http://aronasbakes.com/
+Live website: https://aronasbakes.com/
 
 For a local preview, open `dist/index.html` directly in a browser, or serve the `dist` folder with a local web server.
 
@@ -12,4 +12,4 @@ GitHub Pages publishes the `dist` folder through the Pages workflow on pushes to
 
 Edit content in `dist/index.html`, appearance in `dist/style.css`, and gallery interactions in `dist/script.js`.
 
-Custom domain: aronasbakes.com. Porkbun root ALIAS and www CNAME point to egle111.github.io. HTTPS certificate provisioning pending on 12 October 2026.
+Custom domain: aronasbakes.com. Porkbun root ALIAS and www CNAME point to egle111.github.io. HTTPS certificate approved and HTTPS enforced on 12 October 2026.
