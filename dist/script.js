@@ -19,28 +19,34 @@ filters.forEach(button => button.addEventListener('click', () => {
   }
   document.querySelector('#gallery-status').textContent = `${count} bakes shown`;
 }));
+document.querySelectorAll('.baking-legend a').forEach(link => link.addEventListener('click', () => {
+  const category = link.hash.slice(1);
+  document.querySelector(`[data-filter="${category}"]`)?.click();
+}));
 const dialog = document.querySelector('#photo-dialog');
 let lastPhoto;
-document.querySelectorAll('.photo').forEach(button => button.addEventListener('click', () => {
-  const bake = button.closest('.bake'), image = button.querySelector('img');
-  lastPhoto = button;
-  document.querySelector('#large-photo').src = image.src;
-  document.querySelector('#large-photo').alt = image.alt;
-  document.querySelector('#photo-title').textContent = bake.querySelector('h3').innerText.replace(/\s+/g, ' ');
-  document.querySelector('#photo-description').textContent = bake.querySelector('p').textContent;
-  dialog.showModal();
-  document.body.classList.add('modal-open');
-}));
-document.querySelector('.close-dialog').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', event => { const bounds = dialog.getBoundingClientRect(); if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close(); });
-dialog.addEventListener('close', () => { document.body.classList.remove('modal-open'); lastPhoto?.focus(); });
+if (dialog) {
+  document.querySelectorAll('.photo').forEach(button => button.addEventListener('click', () => {
+    const bake = button.closest('.bake'), image = button.querySelector('img');
+    lastPhoto = button;
+    document.querySelector('#large-photo').src = image.src;
+    document.querySelector('#large-photo').alt = image.alt;
+    document.querySelector('#photo-title').textContent = bake.querySelector('h3').innerText.replace(/\s+/g, ' ');
+    document.querySelector('#photo-description').textContent = bake.querySelector('p').textContent;
+    dialog.showModal();
+    document.body.classList.add('modal-open');
+  }));
+  document.querySelector('.close-dialog').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => { const bounds = dialog.getBoundingClientRect(); if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close(); });
+  dialog.addEventListener('close', () => { document.body.classList.remove('modal-open'); lastPhoto?.focus(); });
+}
 
 // Scroll-linked movement stays visible and follows the visitor's own scroll speed.
 const scrollScenes = [
   ...[...document.querySelectorAll('.intro, .section-heading, .contact')].map(scene => ({ scene, target: scene.querySelector('h2') || scene })),
   ...[...document.querySelectorAll('.bake .photo')].map(target => ({ scene: target.closest('.bake'), target })),
   { scene: document.querySelector('.intro-portrait'), target: document.querySelector('.intro-portrait img') }
-];
+].filter(({ scene, target }) => scene && target);
 scrollScenes.forEach(({ target }) => target.classList.add('scroll-motion'));
 let scrollFrame = 0;
 function updateScrollMotion() {
@@ -72,3 +78,4 @@ reducedMotion.addEventListener('change', () => {
 // Pause other clips when a visitor starts a video.
 const videos = [...document.querySelectorAll('video')];
 videos.forEach(video => video.addEventListener('play', () => videos.forEach(other => { if (other !== video) other.pause(); })));
+

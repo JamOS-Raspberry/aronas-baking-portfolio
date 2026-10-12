@@ -57,3 +57,29 @@ header{position:sticky;top:0;z-index:20}
 .video-gallery video{width:100%;aspect-ratio:9/16;display:block;background:#153a30;object-fit:contain}
 .video-gallery figcaption{font-family:var(--serif);font-size:30px;margin-top:16px;line-height:1.2}
 @media(max-width:620px){.videos{padding:0 6% 60px}.video-gallery{grid-template-columns:1fr;gap:35px}.video-gallery video{max-height:560px}.video-gallery figcaption{font-size:28px}}
+
+/* Make the introduction its own spacious welcome page. */
+.intro{padding:clamp(88px,9vw,150px) 6%;column-gap:clamp(45px,7vw,110px);row-gap:38px}
+.intro>h2{font-size:clamp(58px,6.5vw,96px)}
+.intro-portrait img{max-width:600px}
+.bakes-cta-link{display:inline-flex;align-items:center;justify-content:center;margin-top:34px;padding:12px 24px;border:1px solid var(--cream);border-radius:999px;background:var(--cream);color:var(--green);font-size:16px;font-weight:600;text-decoration:none;transition:background-color .2s ease,border-color .2s ease,transform .2s ease}
+.bakes-cta-link:hover{background:var(--mint);border-color:var(--mint);transform:translateY(-2px)}
+@media(max-width:620px){.intro{padding:68px 6%;row-gap:24px}.intro>h2{font-size:46px}.intro-portrait img{max-width:460px}}
+@media(prefers-reduced-motion:reduce){.bakes-cta-link{transition:none}.bakes-cta-link:hover{transform:none}}
+/* Baking page navigation and uniform photo frames. */
+.baking-legend{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 26px;font-size:13px}
+.baking-legend span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.72;margin-right:3px}
+.baking-legend a{display:inline-block;padding:5px 11px;border:1px solid #005c4b45;border-radius:999px;text-decoration:none;line-height:1.35;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.baking-legend a:hover,.baking-legend a:focus-visible{background:var(--green);border-color:var(--green);color:var(--cream)}
+.bake[id]{scroll-margin-top:100px}
+.gallery .photo img{aspect-ratio:4/5;object-fit:cover}
+.gallery .bake-views .photo img{aspect-ratio:4/5;object-fit:cover}
+@media(max-width:620px){.baking-legend{gap:7px;margin-bottom:22px}.baking-legend a{padding:5px 9px}.baking-page header nav{gap:clamp(6px,2vw,12px)}.baking-page header nav a{font-size:clamp(11px,3.2vw,14px)}}
+@media(prefers-reduced-motion:reduce){.baking-legend a{transition:none}}
+.language-switch{gap:10px;margin-left:24px;padding-left:18px;border-left:1px solid #ffffff40;white-space:nowrap}
+.language-switch a[aria-current="page"]{color:var(--mint);text-underline-offset:5px}
+@media(max-width:620px){header{padding-inline:4%}header>nav:not(.language-switch){gap:clamp(8px,2vw,14px)}header>nav:not(.language-switch) a{font-size:clamp(11px,3vw,14px)}.language-switch{gap:5px;margin-left:clamp(6px,2vw,12px);padding-left:8px}.language-switch a{font-size:11px}}
+.intro>.eyebrow{font-size:clamp(15px,1.3vw,18px)}
+.intro-portrait{overflow:hidden}
+.intro-portrait img{transform:scale(1.08)}
+
